@@ -8,6 +8,10 @@
         name: nginx
         state: present
 
+    - name: Pause for 60 seconds to let EC2 instance initialize and be ready for configuration
+      ansible.builtin.pause:
+        seconds: 60
+
     - name: Create custom index.html directory if it doesn't exist
       ansible.builtin.file:
         path: /usr/share/nginx/html
